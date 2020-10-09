@@ -17,6 +17,9 @@ int pop(){
     top--;
 return pop_ele;
 }
+int peek(){
+    return stack[top];
+}
 void display_stack(){
     while(!isEmpty()){
         printf("%d\n",pop());

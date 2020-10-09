@@ -1,17 +1,16 @@
+
 #include<stdio.h>
 int ternarySearch(int a[],int low,int high,int key);
 
-int main()
-{
+int main() {
 	printf("Enter the no. of elements : ");
 	int n;
-		scanf("%d",&n);
+	scanf("%d",&n);
 	int a[n];
 	printf("Enter the elements : ");
 	for(int i=0;i<n;i++)
-	{
 		scanf("%d",&a[i]);
-	}
+
 	int key;
 	printf("Enter the key : ");
 		scanf("%d",&key);
@@ -19,22 +18,30 @@ int main()
 	 if(res == -1)
 	 	printf("Key not found !");
 	 else
-	 		printf("Key found at index %d\n",res);
+	 	printf("Key found at index %d\n",res);
  }
+int ternarySearch(int arr[], int low, int high, int key) {
+	while (low <= high)
+	{
+		int left_mid = low + (high - low) / 3;
+		int right_mid = high - (high - low) / 3;
 
- int ternarySearch(int a[], int low, int high, int key) {
-    if(low <= high) {
-       int mid1 = (low + (high - low) /3); //mid of first and second block
-       int mid2 = (mid1 + (high - low) /3); //mid of first and second block
-       if(a[mid1] == key)
-          return mid1;
-       if(a[mid2] == key)
-          return mid2;
-       if(key < a[mid1])
-          return ternarySearch(a, low, mid1-1, key);
-       if(key > a[mid2])
-          return ternarySearch(a, mid2+1, high, key);
-       return ternarySearch(a, mid1+1, mid2-1, key);
-    }
-    return -1;
- }
+		// int left_mid = (2*low + high)/3;
+		// int right_mid = (low + 2*high)/3;
+
+		if (arr[left_mid] == key)
+			return left_mid;
+
+		if (arr[right_mid] == key)
+			return right_mid;
+
+		if (arr[left_mid] > key)
+			return ternarySearch(arr, low, left_mid-1, key);
+
+		if (arr[right_mid] < key)
+		    return ternarySearch(arr, right_mid+1, high, key);
+
+	    return ternarySearch(arr, left_mid+1, right_mid-1, key);
+	}
+	return -1;
+}

@@ -21,7 +21,7 @@ int main() {
 	 	printf("Key found at index %d\n",res);
  }
 int ternarySearch(int arr[], int low, int high, int key) {
-	while (low <= high)
+	if (low <= high)
 	{
 		int left_mid = low + (high - low) / 3;
 		int right_mid = high - (high - low) / 3;

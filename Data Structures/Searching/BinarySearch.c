@@ -25,10 +25,10 @@ int binarySearch(int a[], int low, int high, int key) {
       int mid = (low + high) / 2;
       if (a[mid] == key)
           return mid;
-  	  else if (a[mid] > key)
-       	   binarySearch(a, low, mid - 1, key);
-	  else if (a[mid] < key)
-           binarySearch(a, mid + 1, high, key);
+      else if (a[mid] > key)
+       	  binarySearch(a, low, mid - 1, key);
+      else if (a[mid] < key)
+          binarySearch(a, mid + 1, high, key);
     }
-	 return -1;
+    return -1;
 }

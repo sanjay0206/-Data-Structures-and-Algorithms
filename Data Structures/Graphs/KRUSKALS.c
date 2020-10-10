@@ -1,6 +1,6 @@
 #include<stdio.h>
-#define INF 99999
-#define max 1000
+#define INF 999999
+#define max 10000
 int graph[max][max],visited[max],cost[max],v,v1, v2, w,source,i, V, E, j,noEdges=0;
 
 void create_graph(){

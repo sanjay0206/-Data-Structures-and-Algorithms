@@ -10,8 +10,8 @@ bool visited[max];
 void create() {
  	scanf("%d%d",&V,&E);
  	memset(graph,0,sizeof(graph));
-	for(int i=1;i<=V;i++) {
-        for(int j=1;j<=V;j++) {
+	for(i=1;i<=V;i++) {
+            for(j=1;j<=V;j++) {
                 if(graph[i][j] == 0)
                      dist[i][j] = INF;
         }
@@ -19,10 +19,10 @@ void create() {
     for (i=1; i<=E; i++) { 
         scanf("%d%d%d", &v1,&v2,&w);
   	    dist[v1][v2] =  w;
-	}
+    }
 }
 int min(int a,int b) {
-	return (a<b)?a:b;
+	return (a < b) ? a : b;
 }
 void floyds(int V) {
  for(k=1;k<=V;k++)

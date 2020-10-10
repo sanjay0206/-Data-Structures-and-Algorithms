@@ -51,7 +51,7 @@ void Dijiktras(int source,int V) {
         for(int v=1;v<=V;v++)
         {
             if(!visited[v] && cost[u][v] && dist[u] + cost[u][v] < dist[v]) {
-                    dist[v]=dist[u]+cost[u][v];
+                    dist[v] = dist[u] + cost[u][v];
                     path[v] = u; // To store the path not needed  whule finding distance alone
             }
         }
@@ -61,15 +61,15 @@ void display_table(int V,int source) {
 	 printf("Vertex\tDistance\tShortest-Path");
   	 for(int i=2;i<=V;i++)
   	 {
-    	     if(i != source)
+    	    if(i != source)
 	     {
 		  printf("\n%d to %d\t%d\t\t",source,i,dist[i]);
 		  printf("%d ",i);
-		  int j=i;
+		  int j = i;
 		   do{
-		   j=path[j];
-		   printf("<-%d",j);
-		   }while(j!=source);
+		       j=path[j];
+		       printf("<-%d",j);
+		   }while(j != source);
 	    }
   	 }
 }

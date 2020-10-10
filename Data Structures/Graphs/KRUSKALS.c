@@ -12,19 +12,16 @@ void create_graph(){
 	        if(graph[i][j]==0)
 	       	 cost[i] = INF;
 	    }
-	    for (i = 1; i<=E; i++)
-		{
+	    for (i = 1; i<=E; i++) {
 	        scanf("%d%d%d", &v1,&v2,&w);
   	       graph[v1][v2] = graph[v2][v1] = w;
 	    }
 }
 int findMinVertex(int V){
     int index, min = INF;
-	for (v = 1; v<= V; v++)
-	{
- 	 	if (!visited[v] && cost[v]<=min )
- 		{
-	        min = cost[v];
+	for (v = 1; v<= V; v++) {
+ 	   if (!visited[v] && cost[v]<=min ) {
+	           min = cost[v];
 	        index = v;
 	    }
     }
@@ -43,9 +40,8 @@ void kruskals(int V){
 	kruskals(V);
 }
 void MinCost(int V){
-		long int min_cost = 0;
-	    for ( v = 1;  v<= V; v++)
-		{
+	    long int min_cost = 0;
+	    for ( v = 1;  v<= V; v++) {
 	        if (cost[v] == INF)
 	            cost[v] = 0;
 	         min_cost = min_cost+cost[v];

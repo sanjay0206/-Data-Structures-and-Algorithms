@@ -52,7 +52,7 @@ void Dijiktras(int source,int V) {
         {
             if(!visited[v] && cost[u][v] && dist[u] + cost[u][v] < dist[v]) {
                     dist[v] = dist[u] + cost[u][v];
-                    path[v] = u; // To store the path not needed  whule finding distance alone
+                    path[v] = u; // To store the path not needed  while finding distance covered alone.
             }
         }
     }

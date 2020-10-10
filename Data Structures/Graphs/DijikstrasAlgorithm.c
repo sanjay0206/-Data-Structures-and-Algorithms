@@ -20,7 +20,7 @@ void create_graph() {
         {
             scanf("%d%d%d",&v1,&v2,&w);
             if(cost[v1][v2] == 0 || cost[v1][v2] > w)
-                cost[v1][v2]=cost[v2][v1]=w;
+                cost[v1][v2] = cost[v2][v1]=  w;
         }
 }
 int Min_Dist(int V) {
@@ -36,7 +36,7 @@ int Min_Dist(int V) {
 void Dijiktras(int source,int V) {
     int noVisitedNodes=  0;
     for(int i=1;i<=V;i++) {
-        dist[i]= INF;
+        dist[i] = INF;
         visited[i] =  false;
     }
     dist[source]=  0;

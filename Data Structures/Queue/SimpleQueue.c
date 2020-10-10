@@ -2,13 +2,13 @@
 #define maxsize 1000
 int queue[maxsize];
 int front = -1, rear = -1;
-
-int isEmpty(){
-	if(front==-1 && rear==-1)
-		return 1;
-	else
-		return 0;
+int isEmpty() {
+  if(front == -1 || front > rear)
+      return 1;
+   else
+      return 0;
 }
+ 
 int isFull(){
 	if(rear == (maxsize - 1))
 		return 1;

@@ -1,41 +1,39 @@
-#include<stdio.h>
-#include<limits.h>
+#include <stdio.h>
+#include <limits.h>
+#include <string.h>
+#include <stdbool.h>
 #define INF INT_MAX
 #define max 3005
-int graph[max][max],visited[max],cost[max],noEdges=0,v,v1, v2, i, V, E, j,w,source,vertex;
 
-void create_graph(){
+int graph[max][max], cost[max], V, E, v1, v2, w, source ;
+bool visited[max];
+void create_graph() {
     scanf("%d%d",&V,&E);
-    for (i= 1; i <= V; i++)
-      for (j = 1; j <= V; j++) 
-      {
-             graph[i][j]= 0;
-          if(graph[i][j]==0)
-                    cost[i] = INF;
-      }
-      for (i = 1; i<=E; i++){
-         scanf("%d%d%d", &v1,&v2,&w);
-           graph[v1][v2] = graph[v2][v1] = w;
-      }
+    memset(graph,-1,sizeof(graph)); //should include string library for using memset
+    for(int i=1;i<=E;i++){
+        scanf("%d%d%d",&v1,&v2,&w);
+        graph[v1][v2] =  graph[v2][v1] = w;
+    }
 }
 int findMinVertex(int V){
     int index, min = INF;
-    for (v = 1; v<= V; v++) {
-           if (!visited[v] && cost[v]<=min ) {
+    for (int v = 1; v<= V; v++) {
+           if (!visited[v] && cost[v] <= min ) {
             min = cost[v];
             index = v;
            }
     }
 return index;
 }
+int noEdges = 0;
 void prims(int V, int node){
     cost[source] = 0;
-    visited[node] = 1;
+    visited[node] = true;
     noEdges++;
     if (noEdges == V)
         return;
-    for (w = 1; w <= V; w++) {
-        if (graph[node][w] && !visited[w] && (graph[node][w]) < cost[w])
+    for (int w = 1; w <= V; w++) {
+        if (graph[node][w] >= 0 && !visited[w] && (graph[node][w]) < cost[w])
             cost[w] = graph[node][w];
     }
     int source = findMinVertex(V);
@@ -43,7 +41,7 @@ void prims(int V, int node){
 }
 void MinCost(int V){
        long int min_cost = 0;
-        for ( v = 1;  v<= V; v++) {
+        for (int v = 1;  v<= V; v++) {
             if (cost[v] == INF)
                 cost[v] = 0;
              min_cost = min_cost+cost[v];
@@ -52,7 +50,67 @@ void MinCost(int V){
 }
 int main(){
     create_graph();
+    for(int i=1;i<=V;i++){
+       cost[i]=INF;
+     visited[i]= false;
+    } 
     scanf("%d", &source);
     prims(V, source);
     MinCost(V);
 }
+
+/*
+#include <stdio.h>
+#include <stdbool.h>
+#include <limits.h>
+#include <string.h>
+#define max 3006
+
+int graph[max][max], cost[max], V, E, v1, v2, w;
+bool visited[max];
+
+void create_graph() {
+    scanf("%d%d",&V,&E);
+    memset(graph,0,sizeof(graph)); //should include string library for using memset
+    for(int i=1;i<=E;i++){
+        scanf("%d%d%d",&v1,&v2,&w);
+        graph[v1][v2] =  graph[v2][v1] = w;
+    }
+}
+int findMinVertex(int n){
+    int index, min = INT_MAX;
+    for (int v = 1; v<= V; v++) {
+           if (!visited[v] && cost[v]<=min ) {
+            min = cost[v];
+            index = v;
+           }
+    }
+return index;
+}
+int prims(int source) {
+    int sum = 0, visitedEdges = 0;
+    cost[source] = 0;
+    while(visitedEdges < V) {
+        int node = findMinVertex(V);
+        visitedEdges++;
+        visited[node] = true;
+        sum = sum + cost[node];
+        for(int i=1;i<=V;i++){
+            if (graph[node][i] && !visited[i] && (graph[node][i]) <  cost[i])
+             cost[i] = graph[node][i];
+        }
+    }
+return sum;
+}
+int main() {
+    create_graph();
+     for(int i=1;i<=V;i++){
+     cost[i]=INT_MAX;
+     visited[i]=false;
+    }   
+    int source;
+    scanf("%d",&source);
+    int min_cost = prims(source); 
+    printf("%d\n",min_cost);
+}
+*/

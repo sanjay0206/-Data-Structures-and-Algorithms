@@ -1,8 +1,6 @@
 #include <stdio.h>
-#include <limits.h>
 #include <string.h>
 #include <stdbool.h>
-#define INF INT_MAX
 #define max 3005
 
 int adj[max][max], V, E, v1, v2, w, source, que[max], front = -1, rear = -1;;
@@ -26,7 +24,7 @@ void addEdge(int v1,int v2) {
     adj[v1][v2] = 1;
 }
 void create_graph(){
-     memset(adj,0,sizeof(adj));
+     memset(adj,0,sizeof(adj)); // sets 0  for tall the elements in the visited matrix 
       scanf("%d%d", &V,&E);
    // int maxEdges = V*(V-1)
  	for (int i = 1; i <= E; i++) 
@@ -67,8 +65,7 @@ int main()
 	create_graph();
 	printf("\nGraph Successfully created\n");
 	display_graph();
-	for(int v=1;v<=V;v++)
- 	   visited[v]=0;
+	memset(visited, false, sizeof(visited)); // sets false for tall the elements in the visited matrix 
 	printf("\nBFS traversal\n");
 	for(int v=1;v<=V;v++)
 	{

@@ -24,14 +24,13 @@ void addEdge(int v1,int v2) {
     adj[v1][v2] = 1;
 }
 void create_graph(){
-     memset(adj,0,sizeof(adj)); // sets 0  for tall the elements in the visited matrix 
+      memset(adj,0, sizeof(adj)); // sets 0  for tall the elements in the visited matrix 
       scanf("%d%d", &V,&E);
    // int maxEdges = V*(V-1)
- 	for (int i = 1; i <= E; i++) 
- 	{
-       scanf("%d%d", &v1,&v2);
-       addEdge(v1,v2);
-    }
+ 	for (int i = 1; i <= E; i++) {
+          scanf("%d%d", &v1,&v2);
+          addEdge(v1,v2);
+        }
 }
 void display_graph(){
 	printf("\nAdj Matrix\n");
@@ -50,8 +49,7 @@ void bfs(int v){
         {
 		node = dequeue();
 		printf("V%d-",node);
-		for(w=1;w<=V;w++)
-		{
+		for(w=1;w<=V;w++) {
 			if(adj[node][w] && !visited[w])
 			{
 				visited[w] = true;
@@ -60,16 +58,14 @@ void bfs(int v){
 		}
 	}
 }
-int main()
-{
+int main() {
 	create_graph();
 	printf("\nGraph Successfully created\n");
 	display_graph();
 	memset(visited, false, sizeof(visited)); // sets false for tall the elements in the visited matrix 
 	printf("\nBFS traversal\n");
-	for(int v=1;v<=V;v++)
-	{
-	if(!visited[v])
+	for(int v=1;v<=V;v++) {
+	   if(!visited[v])
 		bfs(v);
 	}
 }

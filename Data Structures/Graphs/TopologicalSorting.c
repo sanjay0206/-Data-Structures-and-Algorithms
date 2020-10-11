@@ -50,8 +50,8 @@ int dequeue(){
 	front++;
 	return deq;
 }
-void Toppological_sort() {
-	 int j=1; //j=1 since we are starting from index 1 in our graph
+void Topological_sort() {
+	int j=1; //j=1 since we are starting from index 1 in our graph
 	int T[max], indeg[max];
 	for(i=1;i<=V;i++)
 	{
@@ -79,10 +79,9 @@ void Toppological_sort() {
 	for(i=1;i<=V;i++)
 		printf("V%d\t",T[i]);
 }
-int main()
-{
+int main() {
 	create_graph();
 	printf("\nGraph Successfully created\n");
 	display();
-	Toppological_sort();
+	Topological_sort();
 }

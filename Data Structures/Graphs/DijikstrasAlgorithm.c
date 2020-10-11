@@ -4,7 +4,7 @@
 #define max 3001
 #define INF 99999
 
-int graph[max][max],cost[max][max],dist[max],path[max], V, E, v1, v2, w;
+int graph[max][max],cost[max][max],dist[max],path[max], V, E, v1, v2, w, source;
 bool visited[max];
 
 void create_graph() {
@@ -20,11 +20,11 @@ void create_graph() {
         {
             scanf("%d%d%d",&v1,&v2,&w);
             if(cost[v1][v2] == 0 || cost[v1][v2] > w)
-                cost[v1][v2] = cost[v2][v1]=  w;
+                cost[v1][v2] = cost[v2][v1] = w;
         }
 }
 int Min_Dist(int V) {
-    int min= INF,index;
+    int min = INF,index;
     for(int v=1;v<=V;v++) {
         if(!visited[v] && dist[v] <= min) {
             min = dist[v];
@@ -39,7 +39,7 @@ void Dijiktras(int source,int V) {
         dist[i] = INF;
         visited[i] =  false;
     }
-    dist[source]=  0;
+    dist[source] = 0;
     // since we dont want to visit the same node again 
     // it checks for all nodes other than the source
     // So it runs for V-1 times and stops when all are visited
@@ -67,21 +67,21 @@ void display_table(int V,int source) {
 		  printf("%d ",i);
 		  int j = i;
 		   do{
-		       j=path[j];
+		       j = path[j];
 		       printf("<-%d",j);
 		   }while(j != source);
 	    }
   	 }
 }
 int main() {
-    int test,source;
+    int test;
     scanf("%d",&test);
     while(test--) {
         create_graph();
         scanf("%d",&source);
         Dijiktras(source,V);
         for(int i=1;i<=V;i++) {
-          if(i==source) 
+          if(i == source) 
                 continue;
           if(dist[i] < 0 || dist[i] == INF)
               printf("-1 ");

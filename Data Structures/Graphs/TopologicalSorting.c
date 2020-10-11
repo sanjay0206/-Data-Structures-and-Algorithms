@@ -3,7 +3,6 @@
    step 3: Check whether the node has an edge if so then remove the adge and reduce the indegree
 */
 
-
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -14,16 +13,18 @@ int adj[max][max], i, j, v1, v2, w, V, E, q[max], front = -1, rear = -1;
 void addEdge(int v1,int v2) {
     adj[v1][v2] = 1;
 }
-
+void removeEdge(int v1,int v2) {
+    adj[v1][v2] = 0;
+}
 void create_graph(){
 	 scanf("%d%d", &V,&E);
 	 memset(adj,0,sizeof(adj));  //no edges in graph initially
       for (i = 1; i<=E; i++) {
 	        scanf("%d%d", &v1,&v2); //get the vertices for which edges should be connected
   	        addEdge(v1,v2); //add an edge an edge
-	    }
+      }
 }
-void display(){
+void display() {
 	printf("\nAdj Matrix\n");
 	for(i=1;i<=V;i++) {
 		printf("\n");
@@ -32,7 +33,7 @@ void display(){
 	}
 }
 int indegree(int node){//if the node has an edge the count how many it has
-	int i,c = 0;
+	int i, c = 0;
 	for(i=1;i<=V;i++)
 		if(adj[i][node])
 			c++;
@@ -49,7 +50,7 @@ int dequeue(){
 	front++;
 	return deq;
 }
-void Toppological_sort(){
+void Toppological_sort() {
 	 int j=1; //j=1 since we are starting from index 1 in our graph
 	int T[max], indeg[max];
 	for(i=1;i<=V;i++)
@@ -64,11 +65,10 @@ void Toppological_sort(){
 		int node = dequeue();
 		T[j++] = node;
 		printf("Ts %d \n",T[j-1]);
-		for(w=1;w<=V;w++)
-		{
+		for(w=1;w<=V;w++) {
 			if(adj[node][w])//if the node wich is in  queue has an edge then remove the edge and reduce indegree
 			{
-				adj[node][w] = 0;
+		                removeEdge(node, w);. // Or adj[node][w] = 0
 				indeg[w]--;
 				if(!indeg[w])
 					enqueue(w);

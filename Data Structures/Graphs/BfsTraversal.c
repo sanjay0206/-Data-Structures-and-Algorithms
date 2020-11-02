@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #define max 3005
 
-int adj[max][max], V, E, v1, v2, w, source, que[max], front = -1, rear = -1;;
+int adj[max][max], V, E, que[max], front = -1, rear = -1;;
 bool visited[max];
 
 void enqueue(int x){
@@ -27,6 +27,7 @@ void create_graph(){
       memset(adj,0, sizeof(adj)); // sets 0  for tall the elements in the visited matrix 
       scanf("%d%d", &V,&E);
    // int maxEdges = V*(V-1)
+	int v1, v2, w;
  	for (int i = 1; i <= E; i++) {
           scanf("%d%d", &v1,&v2);
           addEdge(v1,v2);

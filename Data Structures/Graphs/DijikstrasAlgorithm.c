@@ -35,7 +35,7 @@ int Min_Dist(int V) {
     return index;
 }
 void Dijiktras(int source,int V) {
-    int noVisitedNodes=  0;
+    int no_Visited_Nodes = 0;
     for(int i=1;i<=V;i++) {
         dist[i] = INF;
         visited[i] =  false;
@@ -44,10 +44,10 @@ void Dijiktras(int source,int V) {
     // since we dont want to visit the same node again 
     // it checks for all nodes other than the source
     // So it runs for V-1 times and stops when all are visited
-    while(noVisitedNodes < V) 
+    while(no_Visited_Nodes < V) 
     {
         int u = Min_Dist(V);
-        noVisitedNodes++;
+        no_Visited_Nodes++;
         visited[u] = true;
         for(int v=1;v<=V;v++)
         {

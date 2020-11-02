@@ -13,7 +13,7 @@ void create_graph(){
      memset(adj,0,sizeof(adj)); // // sets 0  for tall the elements in the visited matrix 
 	 scanf("%d%d", &V,&E);
    // int maxEdges = V*(V-1)
-	int v1, v2, w;
+	int v1, v2;
  	for (int i = 1; i <= E; i++) 
  	{
           scanf("%d%d", &v1,&v2);

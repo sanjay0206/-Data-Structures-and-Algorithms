@@ -4,7 +4,7 @@
 #define max 3001
 #define INF 99999
 
-int graph[max][max],cost[max][max],dist[max],path[max], V, E, v1, v2, w, source;
+int graph[max][max], cost[max][max], dist[max], path[max], V, E, source;
 bool visited[max];
 
 void create_graph() {
@@ -16,6 +16,7 @@ void create_graph() {
                      cost[i][j] = INF;
         }
     }
+	int v1, v2, w;
         for(int i=1;i<=E;i++)
         {
             scanf("%d%d%d",&v1,&v2,&w);

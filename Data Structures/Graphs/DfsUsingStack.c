@@ -3,17 +3,17 @@
 #include <stdbool.h>
 #define max 3005
 
-int adj[max][max], V, E, v1, v2, w, source, stack[max],top=-1;
+int adj[max][max], V, E, stack[max],top = -1;
 bool visited[max];
 
 void push(int x){
 	top++;
-	stack[top]=x;
+	stack[top] = x;
 }
 int pop(){
-	int del=stack[top];
+	int pop_ele = stack[top];
 	top--;
-	return del;
+	return pop_ele;
 }
 void addEdge(int v1,int v2) {
     adj[v1][v2] = 1;
@@ -22,8 +22,9 @@ void create_graph(){
     memset(adj, 0, sizeof(adj)); // sets 0  for tall the elements in the visited matrix 
 	scanf("%d%d", &V,&E);
 	 // int maxEdges = V*(V-1)
+     int v1, v2;
     for (int i=1; i<=E; i++)
-	{
+    {
      	scanf("%d%d", &v1,&v2);
       	addEdge(v1,v2);
     }
@@ -41,7 +42,7 @@ void dfs(int v){
 	push(v);
 	while(top >= 0)
 	{
-		int node=pop();
+		int node = pop();
 		if(!visited[node])
 		{
 			printf("V%d-",node);

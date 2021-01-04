@@ -56,7 +56,7 @@ int main() {
 		switch(choice) {
     		case 1:  scanf("%d", &val); insert(val, n); break;
     		case 2:  scanf("%d", &val); del(val, n); break;
-    	    case 3:  scanf("%d", &val); search(val, n); break;
+    	        case 3:  scanf("%d", &val); search(val, n); break;
     		case 4:  print(n);  break;
     		default: printf("Wrong Input\n");
 		}

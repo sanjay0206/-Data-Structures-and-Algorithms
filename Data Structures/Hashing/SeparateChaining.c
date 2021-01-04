@@ -51,27 +51,23 @@ int search(int value) {
 //  return 1 for successful delete and  return 0 if value not found
 int del(int value) {
     int key = value % size;
-    struct node *temp = chain[key], *dealloc;
+    struct node *temp = chain[key];
     if(temp != NULL) 
     {
         if(temp->data == value) { // if the value is found in the first node
-            dealloc = temp;
             temp = temp->next;
-            free(dealloc);
             return 1;
         }
         else {
-                while(temp->next) // if we have last node 
+            while(temp->next) // if we have last node 
+            {
+                if(temp->next->data == value) // check for value of next node == value
                 {
-                    if(temp->next->data == value) // check for value of next node == value
-                    {
-                        dealloc = temp->next;
-                        temp->next = temp->next->next;
-                        free(dealloc);
-                        return 1;
-                    }
-                    temp = temp->next; // if not the same then move 
+                    temp->next = temp->next->next;
+                    return 1;
                 }
+                temp = temp->next; // if not the same then move 
+            }
         }
     }
     return 0;

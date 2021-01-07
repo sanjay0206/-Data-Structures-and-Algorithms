@@ -21,10 +21,10 @@ struct node *insert(struct node *temp,int element) {
          return create(temp, element);
 	else
 	{
-		if(element < temp->data)
-            temp->left = insert(temp->left, element);
-        else if(element > temp->data)
-            temp->right = insert(temp->right, element);
+	   if(element < temp->data)
+            	temp->left = insert(temp->left, element);
+           else if(element > temp->data)
+                temp->right = insert(temp->right, element);
      }
     return temp;
 }
@@ -96,9 +96,9 @@ struct node *del(struct node*temp,int element)
 				}
 			}
 		else if(element<temp->data)
-           	temp->left=del(temp->left,element);
+           	     temp->left=del(temp->left,element);
    		else if(element>temp->data){
-       		temp->right=del(temp->right,element);
+       		     temp->right=del(temp->right,element);
 
         	}
      	}
@@ -112,12 +112,12 @@ int heightBST(struct node*temp)
 		 return -1;
   	else
    	{
-  	int rh=heightBST(temp->right);
-  	int lh=heightBST(temp->left);
-		if(lh>rh)
- 			return (lh+1);
-    	else
-			return (rh+1);
+  	      int rh=heightBST(temp->right);
+  	      int lh=heightBST(temp->left);
+	      if(lh > rh)
+ 		 return (lh+1);
+              else
+		 return (rh+1);
 	}
 }
 

@@ -12,6 +12,7 @@ struct node *create(struct node * temp, int val) {
     temp = (struct node*)malloc(sizeof(struct node));
     temp->data = val;
     temp->left = temp->right = NULL;
+    temp = n;
 return temp;
 }
 

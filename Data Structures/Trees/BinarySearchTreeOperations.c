@@ -1,30 +1,32 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-/*Creation of a structure*/
-struct node
-{
-	int data;
-	struct node *left,*right;
-}*root=NULL;
+/* Creation of structure */
+struct node {
+    int data;
+    struct node * left, *right;
+}*root = NULL;
 
-/*Insertion of elements in a BST*/
-struct node *insert(struct node *temp,int element)
-{
-	if(temp==NULL)
-	{
-        temp=(struct node *)malloc(sizeof(struct node));
-        temp->data=element;
-        temp->left=temp->right=NULL;
-	}
+/* Creation of node */
+struct node *create(struct node * temp, int val) {
+    temp = (struct node*)malloc(sizeof(struct node));
+    temp->data = val;
+    temp->left = temp->right = NULL;
+return temp;
+}
+
+/* Inserting the elements to BST */ 
+struct node *insert(struct node *temp,int element) {
+	if(temp == NULL)
+         return create(temp, element);
 	else
 	{
-		if(element<temp->data)
-            temp->left=insert(temp->left,element);
-        else if(element>temp->data)
-            temp->right=insert(temp->right,element);
+		if(element < temp->data)
+            temp->left = insert(temp->left, element);
+        else if(element > temp->data)
+            temp->right = insert(temp->right, element);
      }
-        return temp;
+    return temp;
 }
 
 /*inorder traversal*/

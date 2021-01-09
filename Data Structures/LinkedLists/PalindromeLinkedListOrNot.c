@@ -39,11 +39,11 @@ bool isPalindrome(struct node* head) {
     p = head;
     while(p != NULL){
         list[k++] = p->data;
-        p=p->next;
+        p = p->next;
     }
     for(i=0; i<len/2; i++)
     {
-        if(list[i] != list[len-i-1])
+        if(list[i] != list[len - i - 1])
             return false;
     }
     return true;

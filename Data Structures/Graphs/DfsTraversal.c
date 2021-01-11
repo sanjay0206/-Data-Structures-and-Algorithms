@@ -9,6 +9,7 @@ bool visited[max];
 void addEdge(int v1,int v2) {
     adj[v1][v2] = 1;
 }
+
 void create_graph(){
      memset(adj,0,sizeof(adj)); // // sets 0  for tall the elements in the visited matrix 
 	 scanf("%d%d", &V,&E);
@@ -20,6 +21,7 @@ void create_graph(){
           addEdge(v1,v2);
         }
 }
+
 void display_graph(){
 	printf("\nAdj Matrix\n");
 	for(int i=1;i<=V;i++)
@@ -29,23 +31,23 @@ void display_graph(){
 			printf("%d ",adj[i][j]);
 	}
 }
+
 void dfs(int node) {
 	printf("V%d-",node);
 	visited[node] = true;
-	for(int w=1;w<=V;w++)
-	{
-		if(adj[node][w] && !visited[w])
-	    	    dfs(w);
+	for(int i=1;i<=V;i++) {
+		if(adj[node][i] && !visited[i])
+	    	    dfs(i);
 	}
 }
-int main()
-{
+
+int main() {
 	create_graph();
 	printf("\nGraph Successfully created\n");
 	display_graph();
 	memset(visited,false,sizeof(visited)); // sets false for tall the elements in the visited matrix 
 	printf("\nDFS traversal\n");
-	for(int v=1;v<=V;v++)
- 	   if(!visited[v])
-		dfs(v);
+	for(int i=1;i<=V;i++)
+ 	   if(!visited[i])
+		dfs(i);
 }

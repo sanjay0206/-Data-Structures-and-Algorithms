@@ -46,6 +46,8 @@ int main() {
 	    scanf("%d", &element);
 		root = insert(root,element);
 	}
+	printf("The nodes are : ");
+	inorder(root);
 	printf("Sum of all nodes in BST =  %d\n", addnodes(root));
 }
 

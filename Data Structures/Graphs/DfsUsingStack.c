@@ -40,10 +40,10 @@ void display_graph(){
 			printf("%d ",adj[i][j]);
 	}
 }
-void dfs(int i){
-	push(i);
+void dfs(int node){
+	push(node);
 	while(top >= 0)	{
-	   int node = pop();
+	   node = pop();
 	   if(!visited[node]) {
 	      printf("V%d-",node);
 	      visited[node] = true;

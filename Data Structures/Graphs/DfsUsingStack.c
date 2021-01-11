@@ -3,28 +3,30 @@
 #include <stdbool.h>
 #define max 3005
 
-int adj[max][max], V, E, stack[max],top = -1;
+int adj[max][max], V, E, stack[max], top = -1;
 bool visited[max];
 
 void push(int x){
 	top++;
 	stack[top] = x;
 }
+
 int pop(){
 	int pop_ele = stack[top];
 	top--;
 	return pop_ele;
 }
+
 void addEdge(int v1,int v2) {
     adj[v1][v2] = 1;
 }
+
 void create_graph(){
-    memset(adj, 0, sizeof(adj)); // sets 0  for tall the elements in the visited matrix 
+    memset(adj, 0, sizeof(adj)); // sets 0  for all the elements in the visited matrix 
 	scanf("%d%d", &V,&E);
 	 // int maxEdges = V*(V-1)
-     int v1, v2;
-    for (int i=1; i<=E; i++)
-    {
+    int v1, v2;
+    for (int i=1; i<=E; i++) {
      	scanf("%d%d", &v1,&v2);
       	addEdge(v1,v2);
     }
@@ -38,21 +40,19 @@ void display_graph(){
 			printf("%d ",adj[i][j]);
 	}
 }
-void dfs(int v){
-	push(v);
-	while(top >= 0)
-	{
-		int node = pop();
-		if(!visited[node])
-		{
-			printf("V%d-",node);
-			visited[node] = true;
-		}
-		else
-		     continue;	
-		for(int i=V;i>=1;i--)
-			if(adj[node][i] && !visited[i])
-	  		   push(i);
+void dfs(int i){
+	push(i);
+	while(top >= 0)	{
+	   int node = pop();
+	   if(!visited[node]) {
+	      printf("V%d-",node);
+	      visited[node] = true;
+	   }
+	   else
+	      continue;	
+	   for(int i=V;i>=1;i--)
+		if(adj[node][i] && !visited[i])
+	  	     push(i);
 	}
 }
 int main()
@@ -62,7 +62,7 @@ int main()
 	display_graph();
 	memset(visited, false, sizeof(visited));  // sets false for tall the elements in the visited matrix 
 	printf("\nDFS traversal\n");
-	for(int v=1;v<=V;v++)
-           if(!visited[v])
-		dfs(v);
+	for(int i=1;i<=V;i++)
+           if(!visited[i])
+		dfs(i);
 }

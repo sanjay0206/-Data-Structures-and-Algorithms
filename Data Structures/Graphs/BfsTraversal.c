@@ -31,7 +31,7 @@ void create_graph(){
  	for (int i = 1; i <= E; i++) {
           scanf("%d%d", &v1,&v2);
           addEdge(v1,v2);
-        }
+    }
 }
 void display_graph(){
 	printf("\nAdj Matrix\n");
@@ -42,19 +42,18 @@ void display_graph(){
 			printf("%d ",adj[i][j]);
 	}
 }
-void bfs(int v){
-	int node,w;
-	visited[v] = true;;
-	enqueue(v);
-	while(!isEmpty())
-        {
+void bfs(int i){
+	int node;
+	visited[i] = true;;
+	enqueue(i);
+	while(!isEmpty()) {
 		node = dequeue();
 		printf("V%d-",node);
-		for(w=1;w<=V;w++) {
-			if(adj[node][w] && !visited[w])
+		for(int i=1;i<=V;i++) {
+			if(adj[node][i] && !visited[i])
 			{
-				visited[w] = true;
-				enqueue(w);
+				visited[i] = true;
+				enqueue(i);
 			}
 		}
 	}
@@ -65,8 +64,8 @@ int main() {
 	display_graph();
 	memset(visited, false, sizeof(visited)); // sets false for tall the elements in the visited matrix 
 	printf("\nBFS traversal\n");
-	for(int v=1;v<=V;v++) {
-	   if(!visited[v])
-		bfs(v);
+	for(int i=1;i<=V;i++) {
+	   if(!visited[i])
+		bfs(i);
 	}
 }

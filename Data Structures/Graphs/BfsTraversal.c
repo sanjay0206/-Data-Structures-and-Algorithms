@@ -49,8 +49,7 @@ void bfs(int node)  {
 	   node = dequeue();
 	   printf("V%d-",node);
            for(int i=1;i<=V;i++) {
-		if(adj[node][i] && !visited[i])
-		{
+		if(adj[node][i] && !visited[i]) {
 		    visited[i] = true;
 		    enqueue(i);
 		}

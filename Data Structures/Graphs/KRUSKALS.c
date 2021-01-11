@@ -20,21 +20,21 @@ void create_graph() {
 
 int findMinVertex(int V){
     int index, min = INF;
-    for (int v = 1; v<= V; v++) {
-        if (!visited[v] && cost[v]<=min ) {
-               min = cost[v];
-            index = v;
+    for (int i = 1; i <= V; i++) {
+        if (!visited[i] && cost[i] <= min ) {
+            min = cost[i];
+            index = i;
         }
     }
 return index;
 }
 
-int no_Visited_Edges = 0;
+int  visitedEdges = 0;
 void kruskals(int V){
     int node = findMinVertex(V);
     visited[node] = true;
-    no_Visited_Edges++;
-    if (no_Visited_Edges== V)
+    visitedEdges++;
+    if (visitedEdges == V)
         return;
     for (int i = 1; i <= V; i++){
         if (graph[node][i] >= 0 && !visited[i] && (graph[node][i]) < cost[i]) 

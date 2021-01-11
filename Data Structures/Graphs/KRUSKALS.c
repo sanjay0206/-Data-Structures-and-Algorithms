@@ -17,6 +17,7 @@ void create_graph() {
         graph[v1][v2] =  graph[v2][v1] = w;
     }
 }
+
 int findMinVertex(int V){
     int index, min = INF;
     for (int v = 1; v<= V; v++) {
@@ -27,34 +28,38 @@ int findMinVertex(int V){
     }
 return index;
 }
+
 int no_Visited_Edges = 0;
 void kruskals(int V){
     int node = findMinVertex(V);
     visited[node] = true;
-    no_VisitedE_dges++;
+    no_Visited_Edges++;
     if (no_Visited_Edges== V)
         return;
-    for (w = 1; w <= V; w++){
-        if (graph[node][w] >= 0 && !visited[w] && (graph[node][w]) < cost[w])
-            cost[w] = graph[node][w];
+    for (int i = 1; i <= V; i++){
+        if (graph[node][i] >= 0 && !visited[i] && (graph[node][i]) < cost[i]) 
+            cost[i] = graph[node][i];
     }
     kruskals(V);
 }
+
 void MinCost(int V){
         long int min_cost = 0;
-        for (int v = 1;  v<= V; v++) {
-            if (cost[v] == INF)
-                cost[v] = 0;
-             min_cost = min_cost+cost[v];
+        for (int i = 1;  i<= V; i++) {
+            if (cost[i] == INF)
+                cost[i] = 0;
+             min_cost = min_cost + cost[i];
           }
          printf("%ld\n", min_cost);
 }
+
 int main(){
     create_graph();
-     for(int i=1;i<=V;i++){
+     for(int i=1;i<=V;i++) 
+     {
        cost[i] = INF;
-     visited[i] = false;
-    } 
+       visited[i] = false;
+     } 
      kruskals(V);
-      MinCost(V);
+     MinCost(V);
 }

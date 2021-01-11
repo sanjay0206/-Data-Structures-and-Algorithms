@@ -47,16 +47,16 @@ void bfs(int i){
 	visited[i] = true;;
 	enqueue(i);
 	while(!isEmpty()) {
-		node = dequeue();
-		printf("V%d-",node);
-		for(int i=1;i<=V;i++) {
-			if(adj[node][i] && !visited[i])
-			{
-				visited[i] = true;
-				enqueue(i);
-			}
+	   node = dequeue();
+	   printf("V%d-",node);
+           for(int i=1;i<=V;i++) {
+		if(adj[node][i] && !visited[i])
+		{
+		    visited[i] = true;
+		    enqueue(i);
 		}
-	}
+	   }
+       }
 }
 int main() {
 	create_graph();

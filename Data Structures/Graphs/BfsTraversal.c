@@ -21,7 +21,7 @@ bool isEmpty() {
    return (front == -1 || front > rear);
 }
 void addEdge(int v1,int v2) {
-    adj[v1][v2] = 1;
+    adj[v1][v2] = adj[v2][v1] = 1;
 }
 void create_graph(){
       memset(adj,0, sizeof(adj)); // sets 0  for tall the elements in the visited matrix 
@@ -42,10 +42,9 @@ void display_graph(){
 			printf("%d ",adj[i][j]);
 	}
 }
-void bfs(int i){
-	int node;
-	visited[i] = true;;
-	enqueue(i);
+void bfs(int node)  {
+	visited[node] = true;;
+	enqueue(node);
 	while(!isEmpty()) {
 	   node = dequeue();
 	   printf("V%d-",node);

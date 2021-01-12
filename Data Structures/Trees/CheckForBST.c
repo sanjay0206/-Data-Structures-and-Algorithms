@@ -20,23 +20,24 @@ struct node *insert(struct node *temp,int element) {
 	else
 	{
 	   if(element < temp->data)
-              temp->left = insert(temp->left, element);
+                temp->left = insert(temp->left, element);
            else if(element > temp->data)
-              temp->right = insert(temp->right, element);
-     }
+                temp->right = insert(temp->right, element);
+        }
     return temp;
 }
 
-int validate (struct node* root, int left, int right) {
+
+int  validate (struct node* root, long left, long right) {
         if (root == NULL) 
             return 1;
-        if ((left != NULL && root->data >= right) || (right != NULL && root->data <= left)) 
+        if (root->data >= right || root->data <= left) 
             return 0;
         return validate (root->left , left, root->data) && validate (root->right, root->data, right);
 }
-
-int  isBST(struct node* temp) { 
-    return validate (temp, INT_MIN, INT_MAX);
+    
+int  isValidBST(struct node* root) {
+     return validate (root, LONG_MIN, LONG_MAX); 
 }
 
 int main() {
@@ -46,5 +47,5 @@ int main() {
         scanf("%d", &val);
         root = insert(root, val);
     }
-    isBST(root) == 1 ? printf("It is a BST") : printf("It is not a BST");
+    isValidBST(root) == 1 ? printf("It is a BST") : printf("It is not a BST");
 }

@@ -10,39 +10,37 @@ struct node {
 struct node* temp, *store_next;
 int i;
 struct node* create(int x) {
-	struct node*n=(struct node*)malloc(sizeof(struct node));
- 	 n->data=x;
- 	 n->next=NULL;	
+	struct node*n = (struct node*)malloc(sizeof(struct node));
+ 	 n->data = x;
+ 	 n->next = NULL;	
 return n;
 }
 
 void insert_end(int x) {
 	struct node*n = create(x);
-   	if(head==NULL)
- 		head=tail=n;
+   	if(head == NULL)
+ 		head = tail = n;
  	else
  	{
- 		tail->next=n;
- 		tail=n;
+ 		tail->next = n;
+ 		tail = n;
 	}
 }
 
 bool isPalindrome(struct node* head) {
     int len = 0, k = 0;
     struct node* p = head;
-    while(p != NULL)
-    {
+    while(p != NULL) {
         len++;
         p = p->next;
     }
     int *list = (int*)malloc(sizeof(int)*len);
     p = head;
-    while(p != NULL){
+    while(p != NULL) {
         list[k++] = p->data;
         p = p->next;
     }
-    for(i=0; i<len/2; i++)
-    {
+    for(i = 0; i < len/2; i++) {
         if(list[i] != list[len - i - 1])
             return false;
     }

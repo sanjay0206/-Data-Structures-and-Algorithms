@@ -19,10 +19,10 @@ struct node *insert(struct node *temp,int element) {
          return create(temp, element);
 	else
 	{
-		if(element < temp->data)
-            temp->left = insert(temp->left, element);
-        else if(element > temp->data)
-            temp->right = insert(temp->right, element);
+	   if(element < temp->data)
+              temp->left = insert(temp->left, element);
+           else if(element > temp->data)
+              temp->right = insert(temp->right, element);
      }
     return temp;
 }

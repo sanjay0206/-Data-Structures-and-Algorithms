@@ -27,12 +27,12 @@ struct node *insert(struct node *temp,int element) {
     return temp;
 }
 
-int validate (struct node* root, int  low, long high) {
+int validate (struct node* root, int left, int right) {
         if (root == NULL) 
             return 1;
-        if ((low != NULL && root->data >= high) || (high != NULL && root->data <= low)) 
+        if ((left != NULL && root->data >= right) || (right != NULL && root->data <= left)) 
             return 0;
-        return validate (root->left , low, root->data) && validate (root->right, root->data, high);
+        return validate (root->left , left, root->data) && validate (root->right, root->data, right);
 }
 
 int  isBST(struct node* temp) { 

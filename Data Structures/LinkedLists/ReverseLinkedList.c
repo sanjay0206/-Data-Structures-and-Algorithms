@@ -57,15 +57,3 @@ int main() {
     head = reverseList(head);
     printList(head);
 }
-
-
-
-
-
-
-
-
-
-
-
-

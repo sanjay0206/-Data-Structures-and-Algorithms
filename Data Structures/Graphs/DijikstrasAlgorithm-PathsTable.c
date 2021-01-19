@@ -66,14 +66,14 @@ void display_table(int V,int source) {
   	 for(int i=2;i<=V;i++)
   	 {
     	    if(i != source)
-	     {
+	    {
 		  printf("\n%d to %d\t%d\t\t",source,i,dist[i]);
 		  printf("%d ",i);
 		  int j = i;
-		   do{
+		   do {
 		       j = path[j];
 		       printf("<-%d",j);
-		   }while(j != source);
+		   } while(j != source);
 	    }
   	 }
 }

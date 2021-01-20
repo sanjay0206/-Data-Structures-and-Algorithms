@@ -62,7 +62,7 @@ int main() {
 	create_graph();
 	printf("\nGraph Successfully created\n");
 	display_graph();
-	memset(visited, false, sizeof(visited)); // sets false for tall the elements in the visited matrix 
+	memset(visited, false, sizeof(visited)); // sets false for all the elements in the visited matrix 
 	printf("\nBFS traversal\n");
 	for(int i=1;i<=V;i++) {
 	   if(!visited[i])

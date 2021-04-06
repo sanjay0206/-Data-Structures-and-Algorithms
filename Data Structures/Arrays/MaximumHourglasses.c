@@ -2,14 +2,7 @@
 
 You can consider that the lowest Hourglass value will be the one where all the 7 values are -9.
 
-Considering this, you only need to initialize max_value to -63(ie 6 * -9 = -63) should be enough.*/
-
-//possible hourglasses = (row-2)*(column-2)
-/*Considering that one of the problem constriants is -9 <= arr[i][j] <= 9
-
-You can consider that the lowest Hourglass value will be the one where all the 7 values are -9.
-
-Considering this, you only need to initialize max_value to -63(ie 7 * -9 = -63) hould be enough.*/
+Considering this, you only need to initialize max_value to -63(ie 7 * -9 = -63) should be enough.*/
 
 //possible hourglasses = (row-2)*(column-2)
 #include<stdio.h>
@@ -43,9 +36,9 @@ int main() {
         for(int j=0;j<n;j++)
             scanf("%d",&a[i][j]);
 		
-   	 for(int i=0;i<m-2;i++)
+    for(int i=0;i<m-2;i++)
         for(int j=0;j<n-2;j++)
-			hourglass(a);
+		hourglass(a);
 	
 		printf("%d",maxHourGlassSum);
 }

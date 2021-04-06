@@ -2,7 +2,7 @@
 
 You can consider that the lowest Hourglass value will be the one where all the 7 values are -9.
 
-Considering this, you only need to initialize max_value to -63 should be enough.*/
+Considering this, you only need to initialize max_value to -63(ie 6 * -9 = -63) should be enough.*/
 
 //possible hourglasses = (row-2)*(column-2)
 #include<stdio.h>

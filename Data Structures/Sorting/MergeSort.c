@@ -16,8 +16,7 @@ void merge(int arr[], int low, int mid, int high) {
             arr[k] = aux[j++];
          else 
             arr[k] = aux[i++];
-     } 
-        
+     }    
 }
 
 void mergeSort(int arr[], int start, int end) {

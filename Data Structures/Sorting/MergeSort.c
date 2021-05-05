@@ -1,33 +1,25 @@
 #include <stdio.h>
 void merge(int arr[], int low, int mid, int high) {
-        int n = high - low + 1;
-	// create a temp array
-	int temp[n];
-	
-	// crawlers for both intervals and for temp
-	int i = low, j = mid+1, k = 0;
+    int n = high - low + 1;
+    int aux[n];
+    int i = low, j = mid + 1, k = 0;
 
-	// traverse both arrays and in each iteration add smaller of both elements in temp 
-	while(i <= mid && j <= high)
-	{
-		if(arr[i] <= arr[j]) 
-			temp[k++] = arr[i++];
-		else 
-			temp[k++] = arr[j++];
-	}
-
-	// add elements left in the first interval 
-	while(i <= mid) 
-		temp[k++] = arr[i++];
-
-	// add elements left in the second interval 
-	while(j <= high) 
-		temp[k++] = arr[j++];
-	
-	// copy temp to original interval
-	for(i = low; i <= high; i++) 
-		arr[i] = temp[i-low];
+    for(int k = low; k <= high; k++) 
+        aux[k] = arr[k];
+    
+     for(int k = low; k <= high; k++) {
+         if (i > mid) 
+            arr[k] = aux[j++];
+         if (j > high)
+            arr[k] = aux[i++];
+         else if (aux[i] > aux[j])
+            arr[k] = aux[j++];
+         else 
+            arr[k] = aux[i++];
+     } 
+        
 }
+
 void mergeSort(int arr[], int start, int end) {
 	if(start < end) {
 		int mid = (start + end) / 2;
@@ -36,12 +28,14 @@ void mergeSort(int arr[], int start, int end) {
 		merge(arr, start, mid, end);
 	}
 }
+
 void printArray(int arr[], int n) {
   for (int i = 0; i < n; i++) {
     printf("%d  ", arr[i]);
   }
   printf("\n");
 }
+
 int main() {
    int tc;
    scanf("%d",&tc);

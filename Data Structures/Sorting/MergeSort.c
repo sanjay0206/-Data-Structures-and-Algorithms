@@ -4,6 +4,7 @@ void merge(int arr[], int low, int mid, int high) {
     int aux[n];
     int i = low, j = mid + 1, k = 0;
 
+   // Copy the elements from arr[] to aux[]
     for(int k = low; k <= high; k++) 
         aux[k] = arr[k];
     

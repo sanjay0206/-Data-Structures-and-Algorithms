@@ -5,10 +5,8 @@ struct node
  int data;
  struct node*next;
 }*head=NULL,*tail=NULL;
-	int count=0;
-struct node*i;
-void insert(int x)
-{
+
+void insert(int x) {
   	struct node*n;
 	 n=(struct node*)malloc(sizeof(struct node));
  	 n->data=x;
@@ -22,14 +20,17 @@ void insert(int x)
 	}
 }
 //Using iterative
-struct node* removeDuplicates(struct node* head)
- {
-
-	for(i=head;i->next!=NULL;i=i->next)
-	{
-	    if(i->data==i->next->data)
+struct node* removeDuplicates(struct node* head) {
+   if (head == NULL || head->next == NULL)
+        return head;
+    
+   struct ListNode * i;
+   for(i=head;i!= NULL && i->next!=NULL;) {
+	if(i->val == i->next->val)
 	        i->next = i->next->next;
-	}
+        else
+            i = i->next;
+   }
 return head;
 }
 //Using recursion
